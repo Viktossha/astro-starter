@@ -1,5 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const pageTitle = "Обо мне";
+const identity = {
+    firstName: "Сара",
+    country: "Канада",
+    occupation: "Технический писатель",
+    hobbies: ["фотография", "наблюдение за птицами", "бейсбол"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Написание документации"];
+
+const finished = false;
 ---
 
 <Layout>
@@ -7,5 +18,20 @@ import Layout from '../layouts/Layout.astro';
     <a href="/about/">О сайте</a>
     <a href="/blog/">Блог</a>
 
-    <h1>О сайте</h1>
+    <h1>{pageTitle}</h1>
+    <p>Несколько фактов обо мне:</p>
+    <ul>
+        <li>Меня зовут {identity.firstName}.</li>
+        <li>Моя страна — {identity.country}, а род занятий — {identity.occupation}.</li>
+        {identity.hobbies.length >= 2 &&
+                <li>Два моих увлечения: {identity.hobbies[0]} и {identity.hobbies[1]}</li>
+        }
+    </ul>
+    <p>Мои навыки:</p>
+    <ul>
+        {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
+
+    {finished && <p>Я завершил(а) это руководство!</p>}
+
 </Layout>
